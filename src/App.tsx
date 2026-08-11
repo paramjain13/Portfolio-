@@ -741,23 +741,23 @@ export default function App() {
             <div className="space-y-12">
               {[
                 {
-                  role: "ML Engineering Intern",
-                  org: "Genesis Technologies",
-                  when: "TODO — period",
-                  bullets: [
-                    "TODO — fraud-detection pipeline: model/approach, and a metric (precision, recall, or AUC)",
-                    "TODO — production deployment on AWS: which services, and a scale number (transactions/day, latency)",
-                  ],
-                },
-                {
-                  role: "AI Engineering Intern",
-                  org: "DevQAExpert",
-                  when: "TODO — period",
-                  bullets: [
-                    "TODO — CI/CD automation: what you automated and time saved (build time cut from X to Y)",
-                    "TODO — ML classifier: task, and accuracy or throughput number",
-                  ],
-                },
+  role: "ML Engineering Intern",
+  org: "Genesis Technologies",
+  when: "Jul — Dec 2024",
+  bullets: [
+    "Built an end-to-end fraud-detection pipeline in Python, TensorFlow, and scikit-learn over 15+ engineered features spanning 30K+ users — lifting F1 from 0.71 to 0.89.",
+    "Shipped it as a containerized microservice on AWS (Lambda, S3, EC2) behind Flask REST APIs, serving 1,000+ requests daily at 97% uptime and sub-500ms latency.",
+  ],
+},
+{
+  role: "AI Engineering Intern",
+  org: "DevQAExpert",
+  when: "Jan — May 2024",
+  bullets: [
+    "Trained a scikit-learn classifier to flag defect-prone test scenarios across 15,000+ cases, improving defect prediction by 42%.",
+    "Wired it into the CI/CD pipeline, cutting manual regression effort by 60%.",
+  ],
+},
               ].map((job, i) => (
                 <Rise key={job.org} delay={i * 0.1}>
                   <div className="border-l border-line pl-6 relative group">
