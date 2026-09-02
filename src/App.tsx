@@ -11,18 +11,14 @@ import {
 import Lenis from "lenis"
 
 /* ============================================================
-   MOTION TOKENS — one easing curve everywhere.
-   This single choice does more for perceived polish than any
-   individual animation. Expo-out: fast start, long soft settle.
+   MOTION TOKENS
    ============================================================ */
 
 const EASE = [0.16, 1, 0.3, 1] as const
 const DUR = 0.8
 
 /* ============================================================
-   DATA — every number verified against the repo.
-   Sources: predictions_baseline_mini.json, eval/error_taxonomy.md,
-   config.py, agent/graph.py, agent/db.py
+   DATA
    ============================================================ */
 
 const SECTIONS = [
@@ -35,10 +31,46 @@ const SECTIONS = [
 ] as const
 
 const STATS = [
-  { value: 64.4, suffix: "%", label: "execution accuracy", sub: "BIRD-SQL Mini-Dev, 500 questions" },
-  { value: 1.0, suffix: "", label: "LLM calls per query", sub: "leading systems use dozens" },
-  { value: 178, suffix: "", label: "failures classified", sub: "root-caused by AST diff" },
-  { value: 2, suffix: "", label: "publications", sub: "peer-reviewed" },
+  { value: 10000, suffix: "+", label: "events per second", sub: "distributed telemetry pipeline" },
+  { value: 97, suffix: "%", label: "uptime in production", sub: "30K+ monthly users" },
+  { value: 64, suffix: "%", label: "execution accuracy", sub: "500 BIRD-SQL questions" },
+  { value: 42, suffix: "%", label: "defect prediction lift", sub: "15,000+ scenarios per release" },
+]
+
+const EXPERIENCE = [
+  {
+    role: "Software Engineer Intern",
+    org: "DevQAExpert Solution Private Limited",
+    when: "May 2024 — Aug 2025",
+    bullets: [
+      "Lifted defect prediction accuracy 42% across 15,000+ validation scenarios per release by writing Python automation with scikit-learn that scored every scenario by failure risk and ran the riskiest first, replacing the spreadsheet-driven triage process.",
+      "Cut manual engineering effort 60% by wiring test execution into Jenkins and GitHub Actions CI/CD, pulling result data through SQL queries and REST API calls instead of manual exports, so every code change was validated before sign-off without an engineer in the loop.",
+      "Caught 40+ defects per release before production by building monitoring and alerts across 12 deployment cycles tracking runtime, stage failures, and latency anomalies — then troubleshooting each at code level to isolate root cause.",
+      "Reduced code review turnaround 30% by designing the release validation process the team adopted, documenting every step and supporting peers until they could run it end to end independently.",
+    ],
+  },
+  {
+    role: "Machine Learning Intern",
+    org: "Genesis Technologies",
+    when: "Jan 2023 — Dec 2023",
+    bullets: [
+      "Rebuilt an end-to-end machine learning system in Python with TensorFlow and scikit-learn serving 30K+ monthly users, owning design, testing, deployment, and ongoing maintenance against live production traffic.",
+      "Engineered 15+ features from image and document quality signals after diagnosing that input quality — not model architecture — was the real bottleneck, deduplicating and validating each batch before training.",
+      "Sustained 97% uptime across 1,000+ daily requests by deploying containerized services on AWS Lambda, S3, and EC2 with Docker and Flask REST APIs, instrumenting latency and error-rate alerting that surfaced degradation during traffic peaks.",
+      "Lifted the F1 score from 0.71 to 0.89 by automating cross-validation that scored every candidate build against the previous release under identical conditions, then tuning thresholds guided by systematic failure analysis.",
+    ],
+  },
+  {
+    role: "Data Analyst Intern",
+    org: "Agrawal's 420 Namkeen, Sweets & Bakery",
+    when: "Jan 2022 — Jun 2022",
+    bullets: [
+      "Cut pipeline runtime 45% by profiling slow query paths across Oracle and PostgreSQL, rewriting join logic and moving heavy jobs off peak schedules for the Python and SQL workloads feeding downstream reporting.",
+      "Improved freshness and reliability of daily analysis used across marketing, sales, and warehouse teams through scheduled automation that validated completeness at every stage before downstream querying.",
+      "Accelerated root-cause investigation by building monitoring scorecards and automated alerting on job latency, failures, and data freshness — surfacing degraded jobs the moment they failed rather than hours later.",
+      "Translated system-level metrics into self-service dashboards non-engineering teams could act on unaided, working with peers and managers to define what each metric needed to surface and why.",
+    ],
+  },
 ]
 
 const RESULTS = [
@@ -68,40 +100,63 @@ const TAXONOMY = [
   { cat: "unclassified", n: 1, pct: 0.6 },
 ]
 
+/* href: set to "" to hide the "view code" link entirely.
+   Paste a real GitHub URL to show it. */
 const PROJECTS = [
   {
+    id: "navsim",
+    name: "Navigation Validation Simulator",
+    tag: "C++ simulation and release automation",
+    when: "Aug 2026 — Present",
+    stack: ["C++", "Linux", "Docker", "GitHub Actions"],
+    href: "",
+    bullets: [
+      "Gates releases at a 98% accuracy threshold by replaying routes against expected outputs, so regressions automatically block their own deployment container.",
+      "Every validation run is reproducible — the full sweep is automated through GitHub Actions and Docker, so results from any two builds are directly comparable without manual setup.",
+      "A root-cause module parses failure logs and clusters routes by failure signature into one traceable summary an engineer can act on.",
+    ],
+    expandable: false,
+  },
+  {
+    id: "telemetry",
+    name: "Fleet Telemetry Observability Platform",
+    tag: "Distributed pipeline with monitoring",
+    when: "Jan 2026 — Mar 2026",
+    stack: ["Kafka", "PostgreSQL", "Grafana", "Linux"],
+    href: "",
+    bullets: [
+      "Sustains 10,000+ events per second from 1,000+ simulated devices through a distributed Kafka and PostgreSQL pipeline on Linux, validating every signal stream for completeness before storage.",
+      "Flags traffic anomalies automatically with 3-sigma detection over streaming data, replacing manual inspection of raw telemetry logs across the entire simulated fleet.",
+      "Grafana dashboards surface latency, throughput, and error-rate trends — each metric documented so any engineer can read them unaided.",
+    ],
+    expandable: false,
+  },
+  {
     id: "nl2sql",
-    name: "nl2sql-agent",
-    tag: "Self-correcting text-to-SQL",
-    stack: ["LangGraph", "Claude API", "sqlglot", "SQLite"],
+    name: "NL2SQL Agent",
+    tag: "Information retrieval and query verification",
+    when: "Nov 2025 — Dec 2025",
+    stack: ["Python", "LangGraph", "sqlglot", "SQLite"],
     href: "https://github.com/paramjain13/nl2sql-agent",
-    blurb:
-      "An agent that generates SQL, executes it, and repairs itself from execution errors. Benchmarked on BIRD-SQL Mini-Dev. The target isn't leaderboard SOTA — it's strong accuracy at minimal LLM calls, plus an ablation isolating which components earn their cost.",
+    bullets: [
+      "Reaches 64% execution accuracy across 500 BIRD-SQL benchmark questions against a 1M+ row database through iterative self-correction and automated query repair loops.",
+      "A static verifier parses SQL into an AST and walks the foreign-key graph to reject invalid join paths, catching confident model failures most text-to-SQL systems miss.",
+      "Cuts compute cost per query without moving accuracy by profiling cost and latency across the workload and routing simple questions to lighter models.",
+    ],
     expandable: true,
-  },
-  {
-    id: "analyzer",
-    name: "ai-content-analyzer-pro",
-    tag: "Multi-document RAG",
-    stack: ["Python", "RAG", "GPT-4", "Gemini"],
-    href: "https://github.com/paramjain13/ai-content-analyzer-pro",
-    blurb:
-      "Retrieval pipeline over a vector store for analyzing document collections, with a model-agnostic backend running against both GPT-4 and Gemini.",
-    expandable: false,
-  },
-  {
-    id: "elara",
-    name: "ELARA",
-    tag: "TODO — fill in",
-    stack: ["TODO"],
-    href: "https://github.com/paramjain13/elara-speech-enhancement",
-    blurb: "TODO — one or two sentences: what it does and the interesting technical decision.",
-    expandable: false,
   },
 ]
 
+const SKILLS = [
+  { group: "Languages", items: "Python · C++ · C · TypeScript · JavaScript · SQL · Bash · Rust" },
+  { group: "Systems", items: "Data Structures & Algorithms · Object-Oriented Design · Scalable Distributed Systems · Distributed & Parallel Systems · Unix/Linux · Scripting & Automation · Monitoring & Alerts" },
+  { group: "ML & AI", items: "PyTorch · TensorFlow · scikit-learn · Pandas · NumPy · Machine Learning · NLP · Information Retrieval" },
+  { group: "Data", items: "Kafka · PostgreSQL · MySQL · MongoDB · Apache Airflow · ETL Pipelines · Grafana" },
+  { group: "Web & Cloud", items: "React · Next.js · FastAPI · Flask · REST APIs · Docker · CI/CD · GitHub Actions · Git · AWS (S3, Lambda, EC2)" },
+]
+
 /* ============================================================
-   SMOOTH SCROLL — the single biggest polish lever.
+   SMOOTH SCROLL
    ============================================================ */
 
 function useLenis(enabled: boolean) {
@@ -135,10 +190,6 @@ function useLenis(enabled: boolean) {
     }
   }, [enabled])
 }
-
-/* ============================================================
-   HOOKS
-   ============================================================ */
 
 function useActiveSection() {
   const [active, setActive] = useState<string>("intake")
@@ -177,17 +228,7 @@ function useActiveSection() {
    MOTION PRIMITIVES
    ============================================================ */
 
-/** Masked reveal — content slides up from behind a clipping edge.
- *  Used consistently for every entrance so the page has one voice. */
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode
-  delay?: number
-  className?: string
-}) {
+function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   const reduce = useReducedMotion()
   if (reduce) return <div className={className}>{children}</div>
   return (
@@ -204,16 +245,7 @@ function Reveal({
   )
 }
 
-/** Softer fade+rise for body copy and blocks. */
-function Rise({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode
-  delay?: number
-  className?: string
-}) {
+function Rise({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   const reduce = useReducedMotion()
   if (reduce) return <div className={className}>{children}</div>
   return (
@@ -229,14 +261,14 @@ function Rise({
   )
 }
 
-/** Count-up. Earned here — the numbers are the argument. */
 function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null)
   const inView = useInView(ref, { once: true, margin: "-80px" })
   const reduce = useReducedMotion()
   const mv = useMotionValue(0)
-  const decimals = to % 1 !== 0 ? 1 : 0
-  const text = useTransform(mv, (v) => v.toFixed(decimals))
+  const text = useTransform(mv, (v) =>
+    to >= 1000 ? Math.round(v).toLocaleString() : Math.round(v).toString()
+  )
 
   useEffect(() => {
     if (!inView) return
@@ -244,7 +276,7 @@ function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
       mv.set(to)
       return
     }
-    const controls = animate(mv, to, { duration: 1.4, ease: EASE })
+    const controls = animate(mv, to, { duration: 1.5, ease: EASE })
     return controls.stop
   }, [inView, to, mv, reduce])
 
@@ -256,47 +288,7 @@ function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
   )
 }
 
-/** Link with a wiping underline on hover. */
-function HoverLink({
-  href,
-  children,
-  className = "",
-  external = false,
-}: {
-  href: string
-  children: React.ReactNode
-  className?: string
-  external?: boolean
-}) {
-  return (
-    <a
-      href={href}
-      {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-      className={`group relative inline-block ${className}`}
-    >
-      {children}
-      <span className="absolute left-0 -bottom-0.5 h-px w-full origin-right scale-x-0 bg-verified transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:origin-left group-hover:scale-x-100" />
-    </a>
-  )
-}
-
-/* ============================================================
-   LAYOUT PRIMITIVES
-   ============================================================ */
-
-function Section({
-  id,
-  n,
-  eyebrow,
-  title,
-  children,
-}: {
-  id: string
-  n: string
-  eyebrow: string
-  title: string
-  children: React.ReactNode
-}) {
+function Section({ id, n, eyebrow, title, children }: { id: string; n: string; eyebrow: string; title: string; children: React.ReactNode }) {
   return (
     <section id={id} className="scroll-mt-24 py-28 sm:py-40 border-t border-line">
       <Reveal>
@@ -413,16 +405,12 @@ function TraceRail({ active, log }: { active: string; log: { id: string; t: stri
   )
 }
 
-/* ============================================================
-   STAT BLOCK
-   ============================================================ */
-
 function StatBlock() {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 border-t border-line pt-10">
       {STATS.map((s, i) => (
         <Rise key={s.label} delay={i * 0.08}>
-          <p className="font-display font-extrabold tracking-[-0.04em] text-[clamp(2.5rem,6vw,3.75rem)] leading-none text-verified">
+          <p className="font-display font-extrabold tracking-[-0.04em] text-[clamp(2rem,5vw,3.25rem)] leading-none text-verified">
             <CountUp to={s.value} suffix={s.suffix} />
           </p>
           <p className="mt-3 font-mono text-xs text-ink/70">{s.label}</p>
@@ -446,7 +434,7 @@ function Nl2sqlExplorer() {
   ] as const
 
   return (
-    <div className="mt-8 border border-line rounded-xl bg-surface/40 overflow-hidden">
+    <div className="mt-6 border border-line rounded-xl bg-surface/40 overflow-hidden">
       <div className="flex border-b border-line font-mono text-xs overflow-x-auto">
         {tabs.map((t) => (
           <button
@@ -500,10 +488,9 @@ function Nl2sqlExplorer() {
               </tbody>
             </table>
             <p className="mt-6 text-sm text-muted leading-relaxed">
-              At <span className="text-verified font-mono">1.0</span> LLM calls per query. For
-              scale: human experts reach 92.96% EX on BIRD dev (Li et al., 2023), and current
-              leading systems sit near 82% — but reach it through elaborate multi-step pipelines
-              costing many calls per question. The interesting axis is the other one.
+              At <span className="text-verified font-mono">1.0</span> LLM calls per query. Human
+              experts reach 92.96% EX on BIRD dev (Li et al., 2023); leading systems sit near 82%
+              but get there through multi-step pipelines costing many calls per question.
             </p>
           </div>
         )}
@@ -526,11 +513,7 @@ function Nl2sqlExplorer() {
                 >
                   <code
                     className={`font-mono text-xs shrink-0 sm:w-40 ${
-                      n.tier === "strong"
-                        ? "text-hot"
-                        : n.tier === "cheap"
-                        ? "text-verified"
-                        : "text-muted"
+                      n.tier === "strong" ? "text-hot" : n.tier === "cheap" ? "text-verified" : "text-muted"
                     }`}
                   >
                     {n.name}
@@ -542,8 +525,7 @@ function Nl2sqlExplorer() {
             <p className="mt-6 text-sm text-muted leading-relaxed">
               Schema linking runs on the cheap model — feeding full DDL to the generator wastes
               tokens and hurts precision. All executed SQL is read-only, blocked at the driver
-              level. The correction loop is bounded at 3 attempts, because unbounded retry is how
-              text-to-SQL agents quietly burn 40 calls on a question they'll never get right.
+              level. The correction loop is bounded at 3 attempts.
             </p>
           </div>
         )}
@@ -551,17 +533,14 @@ function Nl2sqlExplorer() {
         {tab === "errors" && (
           <div>
             <p className="text-sm text-muted mb-6 leading-relaxed">
-              Root-cause classification of all 178 failures, via AST diff — zero API calls.
-              Knowing <em>where</em> accuracy leaks is what makes the ablation worth running.
+              Root-cause classification of all 178 failures via AST diff — zero API calls.
             </p>
             <div className="space-y-3">
               {TAXONOMY.map((t, i) => (
                 <div key={t.cat}>
                   <div className="flex justify-between font-mono text-[0.7rem] mb-1.5">
                     <span className="text-ink/80">{t.cat}</span>
-                    <span className="text-muted">
-                      {t.n} · {t.pct}%
-                    </span>
+                    <span className="text-muted">{t.n} · {t.pct}%</span>
                   </div>
                   <div className="h-1.5 bg-line/60 rounded-full overflow-hidden">
                     <motion.div
@@ -578,8 +557,8 @@ function Nl2sqlExplorer() {
             </div>
             <p className="mt-6 text-sm text-muted leading-relaxed">
               Over half of all failures are projection or table-selection errors — the agent picks
-              the wrong columns or the wrong tables, not the wrong logic. That points squarely at
-              schema linking as the highest-leverage component to ablate first.
+              the wrong columns or tables, not the wrong logic. That points at schema linking as
+              the highest-leverage component to improve.
             </p>
           </div>
         )}
@@ -598,10 +577,7 @@ export default function App() {
   const { active, log } = useActiveSection()
 
   const heroRef = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  })
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] })
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 90])
 
@@ -612,7 +588,7 @@ export default function App() {
       <main className="lg:pl-60">
         <div className="max-w-3xl mx-auto px-6 sm:px-10">
 
-          {/* HERO — one orchestrated sequence */}
+          {/* HERO */}
           <section ref={heroRef} id="intake" className="min-h-dvh flex flex-col justify-center py-28">
             <motion.div style={reduce ? undefined : { opacity: heroOpacity, y: heroY }}>
               <motion.p
@@ -654,8 +630,8 @@ export default function App() {
                 transition={{ duration: DUR, ease: EASE, delay: 0.55 }}
                 className="mt-8 text-lg sm:text-xl leading-relaxed text-ink/85 max-w-xl"
               >
-                I build LLM agents that plan, execute, and correct themselves — and the evaluation
-                harnesses that prove whether they actually work.
+                I build systems that catch their own failures — release gates, streaming anomaly
+                detection, and query verifiers that reject bad output before it ships.
               </motion.p>
 
               <motion.div
@@ -664,7 +640,7 @@ export default function App() {
                 transition={{ duration: DUR, ease: EASE, delay: 0.7 }}
                 className="mt-12 pt-6 border-t border-line font-mono text-xs sm:text-sm text-muted flex flex-wrap gap-x-8 gap-y-3"
               >
-                <span>MS CS · Northeastern · Dec 2027</span>
+                <span>MS CS · Northeastern</span>
                 <span>Boston, MA</span>
                 <span className="text-verified">open to co-ops</span>
               </motion.div>
@@ -689,16 +665,23 @@ export default function App() {
             <Rise>
               <div className="space-y-5 text-base sm:text-lg leading-relaxed text-ink/80">
                 <p>
-                  I work on agentic systems — LLM agents that decompose tasks, call tools, and
-                  repair their own failures. Most of my attention goes to the unglamorous half of
-                  that problem: <span className="text-ink">evaluation</span>. Measuring which
-                  components of an agent graph actually earn their latency and token cost, and
-                  which are decoration.
+                  I'm a Computer Science master's student who has shipped machine learning to
+                  production for 30K+ monthly users at 97% uptime, built a distributed telemetry
+                  pipeline sustaining 10,000+ events per second, and published peer-reviewed NLP
+                  research.
                 </p>
                 <p>
-                  Before that, production ML — an identity-verification service on AWS — and systems work
-                  in Rust. The through-line is a preference for things you can measure over things
-                  that merely demo well.
+                  The through-line across all of it is{" "}
+                  <span className="text-ink">verification</span>. A release gate that blocks its
+                  own deployment when accuracy drops. Anomaly detection that flags bad signal
+                  instead of waiting for someone to read the logs. A verifier that rejects an
+                  invalid query before it executes. Systems that check their own work are the ones
+                  you can actually leave running.
+                </p>
+                <p>
+                  I work in Python, C++, and TypeScript across scalable distributed systems,
+                  production ML services, and release automation on Linux, grounded in data
+                  structures and algorithms.
                 </p>
               </div>
             </Rise>
@@ -707,8 +690,8 @@ export default function App() {
               <dl className="mt-12 grid sm:grid-cols-2 gap-x-8 gap-y-6 font-mono text-sm">
                 <div>
                   <dt className="text-muted text-xs mb-1.5">education</dt>
-                  <dd className="text-ink/85">M.S. Computer Science (AI/ML)</dd>
-                  <dd className="text-muted text-xs mt-1">Northeastern University · Dec 2027</dd>
+                  <dd className="text-ink/85">M.S. Computer Science</dd>
+                  <dd className="text-muted text-xs mt-1">Northeastern University, Boston</dd>
                 </div>
                 <div>
                   <dt className="text-muted text-xs mb-1.5">previously</dt>
@@ -718,61 +701,37 @@ export default function App() {
               </dl>
             </Rise>
 
-            <Rise delay={0.15}>
-              <div className="mt-10 mb-16 flex flex-wrap gap-2 font-mono text-xs">
-                {["Python", "Rust", "LangGraph", "RAG", "PyTorch", "AWS", "Docker", "FastAPI"].map(
-                  (t) => (
-                    <span
-                      key={t}
-                      className="px-3 py-1.5 border border-line rounded-full text-muted transition-colors duration-300 hover:border-verified/50 hover:text-ink"
-                    >
-                      {t}
-                    </span>
-                  )
-                )}
-              </div>
-            </Rise>
+            <div className="mt-16 mb-16">
+              <StatBlock />
+            </div>
 
-            <StatBlock />
+            <div className="space-y-5">
+              {SKILLS.map((s, i) => (
+                <Rise key={s.group} delay={i * 0.05}>
+                  <div className="flex flex-col sm:flex-row gap-1 sm:gap-6 pb-5 border-b border-line/60">
+                    <p className="font-mono text-xs text-hot shrink-0 sm:w-28 pt-0.5">{s.group}</p>
+                    <p className="font-mono text-xs text-muted leading-relaxed">{s.items}</p>
+                  </div>
+                </Rise>
+              ))}
+            </div>
           </Section>
 
           {/* EXPERIENCE */}
           <Section id="experience" n="02" eyebrow="experience" title="Where the work shipped.">
-            <div className="space-y-12">
-              {[
-                {
-  role: "Machine Learning Intern",
-  org: "Genesis Technologies",
-  when: "Jul — Dec 2024",
-  bullets: [
-    "Built an end-to-end ML pipeline in Python, TensorFlow, and scikit-learn for identity-verification classification, engineering 15+ features with Pandas, NumPy, and SQL.",
-    "Deployed inference on AWS (Lambda, S3, EC2) behind Flask REST APIs in Docker — 1,000+ daily requests at 97% uptime.",
-    "Evaluated with cross-validation on precision, recall, and F1, lifting F1 from 0.71 to 0.89 through tuning.",
-  ],
-},
-{
-  role: "Software Engineer Intern",
-  org: "DevQAExpert Solutions",
-  when: "Jan — May 2025",
-  bullets: [
-    "Built a Python automation framework with scikit-learn classifying 15,000+ test scenarios.",
-    "Developed data pipelines integrating SQL and REST APIs to extract, clean, and structure training-ready datasets.",
-    "Instrumented monitoring and usage tracking capturing latency and reliability signals per release, across 12 deployment cycles.",
-  ],
-},
-  
-              ].map((job, i) => (
-                <Rise key={job.org} delay={i * 0.1}>
+            <div className="space-y-14">
+              {EXPERIENCE.map((job, i) => (
+                <Rise key={job.org} delay={i * 0.08}>
                   <div className="border-l border-line pl-6 relative group">
                     <span className="absolute -left-[3px] top-2 w-1.5 h-1.5 rounded-full bg-verified transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-150" />
-                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-3">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
                       <h3 className="font-display font-bold text-xl">{job.role}</h3>
-                      <span className="font-mono text-xs text-muted">{job.when}</span>
+                      <span className="font-mono text-xs text-muted shrink-0">{job.when}</span>
                     </div>
                     <p className="font-mono text-sm text-hot mb-4">{job.org}</p>
-                    <ul className="space-y-2.5">
+                    <ul className="space-y-3">
                       {job.bullets.map((b, j) => (
-                        <li key={j} className="text-ink/75 leading-relaxed flex gap-3">
+                        <li key={j} className="text-ink/75 leading-relaxed flex gap-3 text-[0.95rem]">
                           <span className="text-line mt-2 shrink-0">—</span>
                           <span>{b}</span>
                         </li>
@@ -790,25 +749,39 @@ export default function App() {
               {PROJECTS.map((p, i) => (
                 <Rise key={p.id} delay={i * 0.08}>
                   <article>
-                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-3">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-1">
                       <h3 className="font-display font-bold text-2xl">{p.name}</h3>
-                      <HoverLink
-                        href={p.href}
-                        external
-                        className="font-mono text-xs text-muted hover:text-verified transition-colors"
-                      >
-                        view code ↗
-                      </HoverLink>
+                      <span className="font-mono text-xs text-muted shrink-0">{p.when}</span>
                     </div>
-                    <p className="font-mono text-xs text-hot mb-4">{p.tag}</p>
-                    <p className="text-ink/75 leading-relaxed max-w-2xl">{p.blurb}</p>
-                    <div className="mt-4 flex flex-wrap gap-2 font-mono text-[0.7rem]">
+                    <p className="font-mono text-xs text-hot mb-5">{p.tag}</p>
+
+                    <ul className="space-y-3 mb-5">
+                      {p.bullets.map((b, j) => (
+                        <li key={j} className="text-ink/75 leading-relaxed flex gap-3 text-[0.95rem]">
+                          <span className="text-line mt-2 shrink-0">—</span>
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="flex flex-wrap items-center gap-2 font-mono text-[0.7rem]">
                       {p.stack.map((s) => (
                         <span key={s} className="px-2.5 py-1 border border-line rounded text-muted">
                           {s}
                         </span>
                       ))}
+                      {p.href && (
+                        <a
+                          href={p.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="ml-auto text-muted hover:text-verified transition-colors"
+                        >
+                          view code ↗
+                        </a>
+                      )}
                     </div>
+
                     {p.expandable && <Nl2sqlExplorer />}
                   </article>
                 </Rise>
@@ -818,22 +791,33 @@ export default function App() {
 
           {/* PUBLICATIONS */}
           <Section id="publications" n="04" eyebrow="publications" title="Peer-reviewed.">
-            <div className="space-y-6">
-              {[
-                { title: "TODO — paper title", venue: "GIJET", year: "TODO" },
-                { title: "TODO — paper title", venue: "IJSREM", year: "TODO" },
-              ].map((pub, i) => (
-                <Rise key={i} delay={i * 0.08}>
-                  <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6 pb-6 border-b border-line">
-                    <span className="font-mono text-xs text-muted shrink-0 sm:w-20">{pub.year}</span>
-                    <div>
-                      <p className="text-ink/85 leading-snug">{pub.title}</p>
-                      <p className="font-mono text-xs text-hot mt-1.5">{pub.venue}</p>
-                    </div>
+            <Rise>
+              <div className="pb-6 border-b border-line">
+                <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6">
+                  <span className="font-mono text-xs text-muted shrink-0 sm:w-20">2024</span>
+                  <div>
+                    <p className="text-ink/85 leading-snug">
+                      Enhancing Human-Robot Interaction through Advanced NLP
+                    </p>
+                    <p className="font-mono text-xs text-hot mt-1.5">IJSREM</p>
+                    <p className="text-sm text-muted mt-3 leading-relaxed">
+                      Integrated BERT and GPT-3 for real-time speech recognition and emotion
+                      detection — 86.5% accuracy at sub-500ms latency.
+                    </p>
                   </div>
-                </Rise>
-              ))}
-            </div>
+                </div>
+              </div>
+            </Rise>
+
+            <Rise delay={0.08}>
+              <div className="mt-8">
+                <p className="font-mono text-xs text-muted mb-3">certifications</p>
+                <p className="text-ink/75 text-[0.95rem] leading-relaxed">
+                  AWS Academy — Cloud Foundations, Data Engineering, and Generative AI Foundations
+                  (2026)
+                </p>
+              </div>
+            </Rise>
           </Section>
 
           {/* CONTACT */}
@@ -847,14 +831,10 @@ export default function App() {
 
             <div className="grid sm:grid-cols-2 gap-4">
               {[
-                { label: "email", value: "TODO — your email", href: "mailto:TODO" },
-                {
-                  label: "linkedin",
-                  value: "in/paramsachinjain",
-                  href: "https://www.linkedin.com/in/paramsachinjain/",
-                },
+                { label: "email", value: "jain.param@northeastern.edu", href: "mailto:jain.param@northeastern.edu" },
+                { label: "linkedin", value: "in/paramsachinjain", href: "https://www.linkedin.com/in/paramsachinjain/" },
                 { label: "github", value: "paramjain13", href: "https://github.com/paramjain13" },
-                { label: "resume", value: "download PDF", href: "TODO — resume link" },
+                { label: "resume", value: "download PDF", href: "/param-jain-resume.pdf" },
               ].map((c, i) => (
                 <Rise key={c.label} delay={i * 0.06}>
                   <a
@@ -866,7 +846,7 @@ export default function App() {
                     <p className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted mb-2">
                       {c.label}
                     </p>
-                    <p className="text-ink/85 group-hover:text-verified transition-colors duration-300">
+                    <p className="text-ink/85 group-hover:text-verified transition-colors duration-300 break-all">
                       {c.value}
                     </p>
                   </a>
