@@ -1,73 +1,58 @@
-# React + TypeScript + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Param Jain · Portfolio
 
-Currently, two official plugins are available:
+**[paramjain.vercel.app](https://paramjain.vercel.app/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A dark, motion-rich single-page portfolio for an AI/ML engineer ·
+built around one idea: *systems that catch their own failures.*
 
-## React Compiler
+</div>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Highlights
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Loader** · % counter with a scramble-decode name reveal and a twin-curtain exit
+- **Interactive hero** · 2,200-particle Three.js constellation that reacts to the cursor
+- **Velocity-reactive marquee** · speeds up and reverses with your scroll
+- **Custom cursor + magnetic buttons** · morphing ring with contextual labels
+- **Animated stat counters** · flicker-then-count metrics (10,000+ events/sec, 30K+ users…)
+- **Pinned experience rail** · scroll-scrubbed timeline of roles
+- **Live footer clock** · Boston time, always ticking
+- Fully responsive · `prefers-reduced-motion` fallbacks throughout
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+| Layer | Tech |
+|---|---|
+| Framework | React 19 + TypeScript + Vite |
+| Styling | Tailwind CSS · shadcn/ui |
+| Animation | GSAP + ScrollTrigger · Framer Motion · Lenis smooth scroll |
+| 3D | Three.js · React Three Fiber |
+| Fonts | Space Grotesk · Inter · JetBrains Mono |
+| Hosting | Vercel (auto-deploys from `main`) |
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🚀 Local development
+
+```bash
+npm install
+npm run dev      # dev server
+npm run build    # production build → dist/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📁 Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+├── components/     # Navbar, Footer, CustomCursor, MagneticButton, ParticleField, Loader…
+├── sections/       # About, Skills, Experience, Projects, Publications, Contact
+├── pages/Home.tsx  # Single-page composition
+└── lib/scroll.ts   # Lenis + ScrollTrigger singleton
+```
+
+---
+
+<div align="center">
+Built by <a href="https://github.com/paramjain13">Param Jain</a> · Boston, MA
+</div>
