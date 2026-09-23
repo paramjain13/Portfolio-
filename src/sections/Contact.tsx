@@ -156,8 +156,9 @@ export default function Contact() {
           </h2>
 
           <p className="contact-rise mt-6 max-w-[520px] text-base leading-relaxed text-muted">
-            I'm open to internships and collaborations in ML engineering, data engineering, and
-            agentic systems. Boston-based, CPT-authorized · no sponsorship needed to start.
+            I'm open to internships and co-ops across software engineering and AI/ML · from
+            LLM systems to the platforms that run them. Boston-based, CPT-authorized · no
+            sponsorship needed to start.
           </p>
 
           <div className="contact-rise mt-12 flex flex-wrap items-center justify-center gap-4">

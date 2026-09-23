@@ -8,10 +8,10 @@ gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 const ITEMS = [
   'AI/ML ENGINEER',
-  'DATA ENGINEER',
+  'SOFTWARE ENGINEER',
   'M.S. CS @ NORTHEASTERN',
   'SYSTEMS THAT CATCH THEIR OWN FAILURES',
-  'PYTHON · PYTORCH · LANGGRAPH',
+  'PYTHON · TYPESCRIPT · LANGGRAPH',
 ]
 
 function MarqueeSegment() {

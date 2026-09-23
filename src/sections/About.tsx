@@ -9,7 +9,7 @@ import StatCounter from '@/sections/about/StatCounter'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
-const CHIPS = ['BOSTON, MA', 'F-1 · CPT AUTHORIZED', 'EX-DevQAExpert', 'EX-Genesis']
+const CHIPS = ['BOSTON, MA', 'F-1 · CPT AUTHORIZED', 'SDE + AI/ML', 'AI @ REVX']
 
 const EDUCATION = [
   {
@@ -246,17 +246,17 @@ export default function About() {
           </h2>
 
           <p className="about-body mt-8 max-w-[620px] font-sans text-base leading-[1.65] text-muted md:text-lg">
-            I&apos;m Param Jain · an AI/ML engineer pursuing my M.S. in Computer Science at
-            Northeastern University. I&apos;ve shipped failure-risk scoring across 15,000+ test
-            scenarios, taken an identity-verification model from 30% to 95% accuracy for 30K+
-            monthly users, and built a self-correcting NL2SQL agent that verifies its own queries
-            before running them.
+            I&apos;m Param Jain · an AI/ML engineer and software engineer pursuing my M.S. in
+            Computer Science at Northeastern University. I&apos;ve led 12+ client AI automation
+            projects at RevX, shipped production ML serving 30K+ monthly users, and built the
+            software around it too · CI/CD pipelines, REST APIs, and full-stack apps in
+            TypeScript, Rust, and Python.
           </p>
           <p className="about-body mt-5 max-w-[620px] font-sans text-base leading-[1.65] text-muted md:text-lg">
-            My through-line: systems that catch their own failures. Whether it&apos;s a 3-sigma
-            anomaly detector watching 10,000 events/sec of fleet telemetry or an AST-level SQL
-            verifier traversing foreign-key graphs, I&apos;d rather build the guardrail than write
-            the apology.
+            My through-line: systems that catch their own failures. Whether it&apos;s a static
+            SQL verifier rejecting bad queries before they run, a release gate that blocks its
+            own deployment, or an LLM workflow that repairs its own output, I&apos;d rather build
+            the guardrail than write the apology.
           </p>
 
           {/* Detail chips */}

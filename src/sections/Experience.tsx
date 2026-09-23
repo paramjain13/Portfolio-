@@ -14,10 +14,49 @@ gsap.registerPlugin(ScrollTrigger, useGSAP)
 const ROLES: Role[] = [
   {
     index: '01',
+    title: 'AI Engineer',
+    company: 'RevX · Bellevue, WA',
+    rail: 'RevX',
+    dates: 'AUG 2024 – AUG 2025',
+    bullets: [
+      [
+        { t: 'Led ' },
+        { t: '12+', v: true },
+        { t: ' client AI automation projects end to end, scoping → deployment → training · ' },
+        { t: '90%', v: true },
+        { t: ' of clients stayed for follow-on work.' },
+      ],
+      [
+        { t: 'Built a lead enrichment tool (Clay + Claude API) · research time down ' },
+        { t: '−65%', v: true },
+        { t: ', qualified lead conversion up ' },
+        { t: '+28%', v: true },
+        { t: ' across 6 accounts.' },
+      ],
+      [
+        { t: 'Automated lead routing + CRM cleanup with ' },
+        { t: '20+', v: true },
+        { t: ' n8n workflows (HubSpot, Salesforce, LLM routing) · saved ' },
+        { t: '400+ hrs/quarter', v: true },
+        { t: ', CRM errors down ' },
+        { t: '−40%', v: true },
+        { t: '.' },
+      ],
+      [
+        { t: 'Engineered a RAG assistant over client BigQuery data · answers in ' },
+        { t: '<5 min', v: true },
+        { t: ' instead of a 3-day analyst wait, used by ' },
+        { t: '30+', v: true },
+        { t: ' client users.' },
+      ],
+    ],
+  },
+  {
+    index: '02',
     title: 'Software Engineer',
     company: 'DevQAExpert Solution Pvt. Ltd.',
     rail: 'DevQAExpert',
-    dates: 'MAY 2024 – AUG 2025',
+    dates: 'AUG 2023 – JUN 2024',
     bullets: [
       [
         { t: 'Built Python + scikit-learn failure-risk scoring over the regression corpus · defect prediction up ' },
@@ -44,11 +83,11 @@ const ROLES: Role[] = [
     ],
   },
   {
-    index: '02',
+    index: '03',
     title: 'Machine Learning Engineer',
     company: 'Genesis Technologies',
     rail: 'Genesis',
-    dates: 'JAN 2023 – DEC 2023',
+    dates: 'AUG 2022 – AUG 2023',
     bullets: [
       [
         { t: 'Identity-verification service (TensorFlow, scikit-learn) · accuracy ' },
@@ -75,8 +114,8 @@ const ROLES: Role[] = [
     ],
   },
   {
-    index: '03',
-    title: 'Data Analyst Intern',
+    index: '04',
+    title: 'Data Engineering Intern',
     company: "Agrawal's 420 Namkeen, Sweets & Bakery",
     rail: "Agrawal's 420",
     dates: 'JAN 2022 – JUN 2022',
@@ -176,7 +215,7 @@ export default function Experience() {
               scrollTrigger: {
                 trigger: sectionRef.current,
                 start: 'top top',
-                end: () => `+=${Math.round(window.innerHeight * 2.5)}`,
+                end: () => `+=${Math.round(window.innerHeight * 3.4)}`,
                 scrub: 0.6,
                 pin: true,
                 anticipatePin: 1,

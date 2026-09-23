@@ -46,6 +46,7 @@ const ROWS: SkillRow[] = [
       { name: 'GPT-4' },
       { name: 'Pinecone' },
       { name: 'Prompt Engineering' },
+      { name: 'LLM Evaluation' },
     ],
   },
   {
@@ -58,6 +59,8 @@ const ROWS: SkillRow[] = [
       { name: 'Airflow' },
       { name: 'ETL' },
       { name: 'Grafana' },
+      { name: 'BigQuery' },
+      { name: 'n8n' },
     ],
   },
   {
